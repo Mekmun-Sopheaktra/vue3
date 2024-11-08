@@ -18,7 +18,7 @@ export default ({ mode }) => {
   }
 
   return defineConfig({
-    base: VITE_BASE_URL,
+    base: VITE_BASE_URL || './',
     plugins: [
       vue(),
       AutoImport({
@@ -53,15 +53,6 @@ export default ({ mode }) => {
         algorithm: 'gzip',
         threshold: 10240,
         deleteOriginFile: false,
-      }),
-      obfuscatorPlugin({
-        include: ['src/path/to/file.js', 'path/anyjs/**/*.js', /foo.js$/],
-        exclude: [/node_modules/],
-        apply: 'build',
-        debugger: true,
-        options: {
-          debugProtection: true,
-        },
       }),
     ],
     define: {
