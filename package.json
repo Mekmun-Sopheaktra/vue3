@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node post-build-obfuscate.js",
     "preview": "vite preview",
     "lint": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,js,ts,tsx}\"",
     "lint:fix": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,js,ts,tsx}\" --fix",
