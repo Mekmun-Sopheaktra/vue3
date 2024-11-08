@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node post-build-obfuscate.js",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,js,ts,tsx}\"",
     "lint:fix": "eslint --cache --max-warnings 0 \"{src,mock}/**/*.{vue,js,ts,tsx}\" --fix",
@@ -29,7 +29,8 @@
     "vite-plugin-javascript-obfuscator": "^3.1.0",
     "vite-plugin-obfuscator": "^1.0.5",
     "vue": "^3.3.9",
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "vue3-cookies": "^1.0.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",

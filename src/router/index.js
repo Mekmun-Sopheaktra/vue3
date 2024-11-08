@@ -1,33 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import guards from './guards';
 
-const files = import.meta.glob('./modules/*.js', {
-  eager: true,
-});
-
-const routeModuleList = [];
-
-Object.keys(files).forEach((key) => {
-  const module = files[key].default || {};
-  const moduleList = Array.isArray(module) ? [...module] : [module];
-  routeModuleList.push(...moduleList);
-});
-
-const asyncRouterList = [...routeModuleList];
-
-const defaultRouterList = [];
-
-const routes = [...defaultRouterList, ...asyncRouterList];
+const routes = [
+  {
+    path: '/',
+    name: 'default',
+    component: () => import('../views/HomeView.vue'),
+  },
+  {
+    path: '/pinia',
+    name: 'pinia',
+    component: () => import('../views/PiniaView.vue'),
+  },
+];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
+  linkActiveClass: 'active',
   routes,
-  scrollBehavior() {
-    return {
-      el: '#app',
-      top: 0,
-      behavior: 'smooth',
-    };
-  },
 });
+
+router.beforeEach(guards.beforeEach);
+router.beforeResolve(guards.beforeResolve);
+router.afterEach(guards.afterEach);
 
 export default router;
