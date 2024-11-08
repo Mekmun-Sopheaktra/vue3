@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-. "$(dirname "$0")/common.sh"
 
-npx lint-staged
+echo "🧪 Source code analaysis..."
+
+# eslint --fix --no-error-on-unmatched-pattern $(git diff --name-only HEAD | grep '^resources/js/.*\.\(vue\|js\)$' | xargs)

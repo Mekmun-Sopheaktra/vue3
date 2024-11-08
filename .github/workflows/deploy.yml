@@ -28,6 +28,9 @@ jobs:
           version: 8.6.10
           run_install: false
 
+      - name: Verify pnpm installation
+        run: pnpm --version
+
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
@@ -41,10 +44,13 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --verbose
 
       - name: Build
         run: pnpm run build
+
+      - name: Show dist folder contents
+        run: ls -alh dist
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
