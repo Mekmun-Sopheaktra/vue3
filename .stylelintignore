@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+public/
+
+**/*.min.css
+**/*-min.css
+**/*.bundle.css
